@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+ 
+  <node name="cloudpublish" pkg="cloudpublish" type="cloudout">
+	<param name="path" value="$(find cloudpublish)/data/resultPointCloudFile.pcd" type="str" />
+	<param name="frame_id" value="camera" type="str" />
+	<param name="topic" value="/pointcloud/output" type="str" />
+	<param name="hz" value="2" type="int" />
+  </node>
+
+  <!-- Load ocotmap launch -->
+  <include file="$(find cloudpublish)/launch/octomaptransform.launch" />
+
+  <!-- RViz -->
+  <node pkg="rviz" type="rviz" name="$(anon rviz)"  output="screen" args="-d $(find cloudpublish)/rviz/rvizpeizhi.rviz" required="true"/>
+
+</launch>
+
+ 
+
+		
+ 
